@@ -1,22 +1,22 @@
-# proj88-openHarmonyOS-Cross-Device-Control
+# proj88-OpenHarmonyOS-Local-AIGC-APP
 ### 项目名称
-基于openHarmony操作系统，为操作系统添加一个跨设备互联接口，并使用openharmony的跨设备互联能力与自己构建的接口实现一个跨设备应用。
+基于OpenHarmony操作系统，构建离线多模态大模型APP。要求大模型能够输入、分析、理解文字、音频、视频、图片等多媒体数据，并生成、输出文字、音频、视频、图片等多媒体数据。
 
 
 
 ### 项目描述
 
-openHarmony中提供了远程调用接口和数据库互联功能，但是二者在直接的使用上并不能完美应对所有的功能需求。
+OpenHarmony原生支持MindSpore AI框架，同时在OpenHarmony社区也有开发者成功移植了pytorch的C库libtorch。因此当前OpenHarmony操作系统已经具备了初步的本地AI模型开发和运行能力。
 
-目前提供的功能如下：跨设备传递调用Ability信息，跨设备数据库互通。但是没有实现跨设备的功能信息传递（A设备上直接通过某个API向B设备发送某种Ability内的控制信号）。
+但是目前社区上并没有丰富的应用AI生态，且目前接入OpenHarmony操作系统的AI服务均为在线服务。即大模型部署在云端，Openharmony终端仅部署一个UI界面，使用调用接口的方式请求云端服务器接口数据。
 
-本实验的目标是在openHarmony上面实现新的远端调用接口，实现外部功能的传递api，从而完成跨设备互联接口，该接口的实现方式不限（包括但不限于系统能力、开发库）。
+本实验的目标是在OpenHarmony本地部署一个生成式大模型，围绕大模型构建多模态服务，开发一个大模型APP。
 
 
 
 ### 所属赛道
 
-2021全国大学生操作系统比赛的“OS功能设计”赛道
+2024全国大学生操作系统比赛的“OS功能设计”赛道
 
 
 
@@ -46,20 +46,19 @@ openHarmony中提供了远程调用接口和数据库互联功能，但是二者
 
 ### 特征 
 
-* 添加功能后的openharmonyOS可以提供如下API：供多设备功能信息流的传递，使其提供外在接口，使得多设备之间可以直接传递功能信息。
+* 用户能够通过UI界面输入文字、音频、视频、图片等多媒体数据。
 
-* 使用设计好后的api设计一个完整的跨设备调用案例。
+* 大模型可以正确处理用户的输入，并生成对应的输出。
 
-* 跨设备调用案例例如：大屏与手机的交互体验（优酷）；居家设备与手机的相互控制（九阳）。
+* 用户能够通过UI界面得到大模型生成的文字、音频、视频、图片等多媒体数据。
 
   
 
 ### 文档
-* 硬件平台：[Hi3861开发](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/Hi3861开发板.md)、[Hi3516开发板](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/Hi3516开发板.md)、[Hi3518开发板](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/Hi3518开发板.md)、openharmony移动端设备
-* 软件平台：openHarmony分布式操作系统、相关开发环境
+* 硬件平台：Openharmony移动端设备（RISC-V硬件优先）
+* 软件平台：OpenHarmony4及以上版本的操作系统、相关开发环境
 * openharmony技术文档：https://gitee.com/openharmony
 * openharmony快速开始文档：https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/quick-start/Readme-CN.md
-* openharmony开发、学习资源：https://gitee.com/isrc_ohos/ultimate-harmony-reference
 
 ### License
 
@@ -71,17 +70,12 @@ openHarmony中提供了远程调用接口和数据库互联功能，但是二者
 
 ### 注意：下面的内容是建议内容，不要求必须全部完成。选择本项目的同学也可与导师联系，提出自己的新想法，如导师认可，可加入预期目标
 
-### 第一题：多端调用
-在多端使用openharmony的前提下确保应用可以多端调用功能
+### 第一题：高效性
+使用推理加速框架、硬件加速技术，提高大模型的生成速度。
 
-### 第二题：功能信息传递
-设计合适的算法逻辑，借用数据库互通和远端调用Ability来实现功能信号的传递
+### 第二题：可扩展性
+设计可扩展的框架，便于后续新增其它大模型、功能函数、插件等。
 
-### 第三题
+### 第三题：基于大模型的系统操作
 
-实现时可适当考虑调用性能、可维护性
-设计合适的算法，以保障功能信息传递的时效性和延迟。
-
-### 第四题
-
-制作一个简单的demo应用程序来演示相关功能。
+将大模型的输出对接OpenHarmony的系统操作，为用户提供一种新的操作系统使用方法。
